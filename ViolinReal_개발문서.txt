@@ -218,6 +218,6 @@ https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/master/samples/v
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 다운로드 후 아래 경로에 저장하세요:
-D:\원병석\AI\어플\ViolinReal.html
-D:\원병석\AI\어플\ViolinReal_개발문서.txt (이 파일)
+ViolinReal.html
+ViolinReal_개발문서.txt (이 파일)
 

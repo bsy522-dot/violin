@@ -2,7 +2,7 @@
   "name": "Violin Real",
   "short_name": "Violin",
   "description": "바이올린 실시간 연주 앱",
-  "start_url": "./ViolinReal.html",
+  "start_url": "./ViolinReal-v3.html",
   "display": "standalone",
   "background_color": "#1a1020",
   "theme_color": "#D4894A",

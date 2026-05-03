@@ -1,14 +1,17 @@
 {
-  "name": "Violin Real",
+  "name": "Violin Real v4",
   "short_name": "Violin",
-  "description": "바이올린 실시간 연주 앱",
-  "start_url": "./ViolinReal-v3.html",
+  "description": "바이올린 실시간 연주 앱 - 20곡 리듬게임/학습/곡연주",
+  "start_url": "./ViolinReal-v4.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#1a1020",
   "theme_color": "#D4894A",
+  "categories": ["music", "education", "games"],
+  "lang": "ko",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1020'/%3E%3Cellipse cx='32' cy='38' rx='11' ry='14' fill='%23D4894A'/%3E%3Crect x='30' y='10' width='4' height='28' rx='2' fill='%23333'/%3E%3Ccircle cx='32' cy='12' r='3.5' fill='%23333'/%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1020'/%3E%3Cellipse cx='32' cy='38' rx='11' ry='14' fill='%23D4894A'/%3E%3Crect x='30' y='10' width='4' height='28' rx='2' fill='%23333'/%3E%3Ccircle cx='32' cy='12' r='3.5' fill='%23333'/%3E%3Ctext x='32' y='58' text-anchor='middle' font-size='8' fill='%23ffd700' font-family='serif'%3Ev4%3C/text%3E%3C/svg%3E",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

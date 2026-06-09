@@ -1,5 +1,5 @@
-const CACHE='violin-v10';
-const URLS=['./','./ViolinReal-v5.html','./v6_patch.js','./v7_patch.js','./v8_patch.js','./v9_patch.js','./v10_patch.js','./manifest.json'];
+const CACHE='violin-v11';
+const URLS=['./','./ViolinReal-v5.html','./v6_patch.js','./v7_patch.js','./v8_patch.js','./v9_patch.js','./v10_patch.js','./v11_patch.js','./manifest.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('fetch',e=>{
@@ -26,6 +26,9 @@ self.addEventListener('fetch',e=>{
             if(!html.includes('v10_patch.js')){
               html=html.replace('</body>','<script src="./v10_patch.js"><\/script>\n</body>');
             }
+            if(!html.includes('v11_patch.js')){
+              html=html.replace('</body>','<script src="./v11_patch.js"><\/script>\n</body>');
+            }
             return new Response(html,{headers:{'content-type':'text/html;charset=UTF-8'}});
           });
         }
@@ -47,6 +50,9 @@ self.addEventListener('fetch',e=>{
           }
           if(!html.includes('v10_patch.js')){
             html=html.replace('</body>','<script src="./v10_patch.js"><\/script>\n</body>');
+          }
+          if(!html.includes('v11_patch.js')){
+            html=html.replace('</body>','<script src="./v11_patch.js"><\/script>\n</body>');
           }
           return new Response(html,{headers:{'content-type':'text/html;charset=UTF-8'}});
         });

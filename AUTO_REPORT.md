@@ -1,5 +1,60 @@
 # VIOLIN REAL — AUTO REPORT
 
+## 2026-06-21 — NEXTERA+PRISM v13.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Simply Violin / Violin Real 대비)
+
+**경쟁앱 대비 열위점 (v12 기준) → v13 해결:**
+| 기능 | Trala | Simply Violin | v12 | v13 (개선) |
+|------|-------|---------------|-----|------------|
+| 곡 라이브러리 | 1000+ | 300+ | 94곡 | **104곡** |
+| 레슨 수 | 200+ | 100+ | 120 | **130** |
+| 다이내믹 연습 | ○ pp~ff 6단계 | ○ | × | **○ Canvas 6단계** |
+| 아르페지오 연습 | ○ 장/단 | ○ | × | **○ 12종 Canvas** |
+| 튜닝 도우미 | ○ 주파수 기반 | ○ | 제한적 | **○ Canvas Meter** |
+| 연습 스트릭 | ○ 7/30일 | ○ | × | **○ 30일 히트맵** |
+| 악기 관리 가이드 | ○ | × | × | **○ 12종** |
+| 장르별 학습 | ○ 10+ | ○ 5+ | × | **○ 12종** |
+| 자세 교정 | ○ AI 분석 | ○ | × | **○ 8종 클리닉** |
+| 포모도로 타이머 | × | × | × | **○ 4프리셋** |
+
+### Phase 2 · 개발 (전팀원 투입)
+
+**v13_patch.js** (758줄, 자기완결형 IIFE 패치 모듈):
+- 다이내믹 트레이너: pp/p/mp/mf/f/ff 6단계 Canvas 바차트 + Web Audio 볼륨 재현 + 연습 추적
+- 아르페지오 연습기: 12종 (C/G/D/A/E/F Major + Am/Dm/Em/Cm + Dim/Aug) Canvas 주파수 노드 연결 + 순차 재생
+- 튜닝 도우미: G3/D4/A4/E5 4현 기준음 Canvas 미터 + 센트 눈금 + Web Audio 정현파 재생
+- 연습 스트릭 트래커: 30일 Canvas 히트맵 + 연속일/총활동/최대연속 통계 + localStorage 영속
+- 바이올린 관리 가이드: 12종 (활 털/송진/현 교체/온도/케이스/브릿지/페그/청소/현감기/테일피스/활보관/정기점검)
+- 음악 장르 탐험: 12종 (클래식/바로크/로맨틱/재즈/탱고/아이리쉬/집시/팝/록/포크/영화음악/현대) + 장르별 샘플 재생
+- 기초 자세 클리닉: 8종 (어깨/왼손/활잡기/오른팔/발/목/호흡/휴식) 교정 가이드
+- 연습 타이머: 4프리셋 (포모도로25/5, 집중15/3, 롱45/10, 숏10/2) Canvas 원형 진행률 + 자동 Work/Rest 전환
+- 10곡 추가 (94→104): 봉수새/아리랑변주/티하우저메뉴엣/바이올린소나타봄/셀틱우먼/카바레리아/헝가리무곡5테마/봄넷로아버지/무궁동산변주/아바네라
+- 10레슨 추가 (120→130): 다이내믹pp/ff/크레셴도, 아르페지오C/G/단조, 튜닝완성, 탱고스타카토, 자세정립, v13졸업
+- 퀴즈 v13 +15문 (45→60): 다이내믹/튜닝/아르페지오/관리/장르/자세/포모도로 관련
+- 업적 +12개 (94→106): dyn_student/dyn_master/arp_student/arp_master/tuner_user/streak_7/streak_30/care_student/care_master/genre_explorer/genre_master/posture_student/posture_master/timer_user/timer_master/quiz_v13_ace
+- SFX 12종: dynamic_play/arpeggio_note/tuner_ping/streak_check/care_open/genre_play/posture_view/timer_tick/timer_done/quiz_v13/achieve_v13/feature_open13
+- 하단 스크롤 네비바 9종 + 키보드 Shift+1~8 + Escape 전체닫기
+
+### Phase 3 · 품질 검증
+
+| 항목 | 결과 |
+|------|------|
+| JS 문법 (node --check) | **PASS** |
+| 괄호 밸런스 | **769/769, 296/296, 151/151** |
+| HTML div 밸런스 | **178/178 BALANCED** |
+| CDN 외부 링크 | **0건** |
+| 개인정보 노출 | **0건** |
+| 파일 삭제 | **0건** |
+
+### Phase 4 · 커밋
+
+- 커밋: `[AUTO] 2026-06-21 violin v13.0`
+- 파일: v13_patch.js(신규), index.html, sw.js, manifest.json, ViolinReal-v5.html, AUTO_REPORT.md
+
+---
+
+
 ## 2026-06-06 — NEXTERA+PRISM v10.0 대규모 업그레이드
 
 ### Phase 1 · 벤치마킹 분석 (Trala / Simply Violin / Violin Real 대비)

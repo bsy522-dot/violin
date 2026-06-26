@@ -1,7 +1,7 @@
 {
-  "name": "Violin Real v13",
+  "name": "Violin Real v14",
   "short_name": "Violin",
-  "description": "바이올린 실시간 연주 앱 - 104곡 리듬게임/학습/곡연주/피치카토/녹음/튜너/드론/음정트레이닝/앙상블/핑거링차트/시보드리딩/연습분석/비브라토트레이너/듀엣모드/보잉분석/톤분석기/주간챌린지/연주일지/연습녹음재생/템포빌더/현이동훈련/음악용어사전/연습목표/레퍼토리추천/보잉궤적시뮬레이터/음색프리셋/스케일마스터/활쓰기기법도감/연습캘린더/음악이론교실/연습플래너/공연모드/작곡워크숍/음악가명언/오케스트라배치도/음악감상실/포지션맵/바이올린역사관/일일워밍업/연습분석대시보드/마스터클래스/앙상블파트연습/다이내믹트레이너/아르페지오연습기/튜닝도우미/연습스트릭/바이올린관리가이드/음악장르탐험/기초자세클리닉/연습타이머",
+  "description": "바이올린 실시간 연주 앱 - 114곡 리듬게임/학습/곡연주/피치카토/녹음/튜너/드론/음정트레이닝/앙상블/핑거링차트/시보드리딩/연습분석/비브라토트레이너/듀엣모드/보잉분석/톤분석기/주간챌린지/연주일지/연습녹음재생/템포빌더/현이동훈련/음악용어사전/연습목표/레퍼토리추천/보잉궤적시뮬레이터/음색프리셋/스케일마스터/활쓰기기법도감/연습캘린더/음악이론교실/연습플래너/공연모드/작곡워크숍/음악가명언/오케스트라배치도/음악감상실/포지션맵/바이올린역사관/일일워밍업/연습분석대시보드/마스터클래스/앙상블파트연습/다이내믹트레이너/아르페지오연습기/튜닝도우미/연습스트릭/바이올린관리가이드/음악장르탐험/기초자세클리닉/연습타이머/인터벌트레이닝/멜로딕딕테이션/보잉분석대시보드/비브라토속도폭트레이너/음정정확도히트맵/연습저널/곡난이도진행맵/합주시뮬레이터",
   "start_url": "./ViolinReal-v5.html",
   "display": "standalone",
   "orientation": "portrait",
@@ -11,7 +11,7 @@
   "lang": "ko",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1020'/%3E%3Cellipse cx='32' cy='38' rx='11' ry='14' fill='%23D4894A'/%3E%3Crect x='30' y='10' width='4' height='28' rx='2' fill='%23333'/%3E%3Ccircle cx='32' cy='12' r='3.5' fill='%23333'/%3E%3Ctext x='32' y='58' text-anchor='middle' font-size='8' fill='%23ff6644' font-family='serif'%3Ev13%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1020'/%3E%3Cellipse cx='32' cy='38' rx='11' ry='14' fill='%23D4894A'/%3E%3Crect x='30' y='10' width='4' height='28' rx='2' fill='%23333'/%3E%3Ccircle cx='32' cy='12' r='3.5' fill='%23333'/%3E%3Ctext x='32' y='58' text-anchor='middle' font-size='8' fill='%23ff6644' font-family='serif'%3Ev14%3C/text%3E%3C/svg%3E",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -19,44 +19,44 @@
   ],
   "shortcuts": [
     {
-      "name": "다이내믹 트레이너",
-      "short_name": "다이내믹",
-      "url": "./ViolinReal-v5.html#dynamic"
+      "name": "인터벌 트레이닝",
+      "short_name": "인터벌",
+      "url": "./ViolinReal-v5.html#interval"
     },
     {
-      "name": "아르페지오 연습기",
-      "short_name": "아르페지오",
-      "url": "./ViolinReal-v5.html#arpeggio"
+      "name": "멜로딕 딕테이션",
+      "short_name": "딕테이션",
+      "url": "./ViolinReal-v5.html#dictation"
     },
     {
-      "name": "튜닝 도우미",
-      "short_name": "튜닝",
-      "url": "./ViolinReal-v5.html#tuner"
+      "name": "보잉 분석",
+      "short_name": "보잉",
+      "url": "./ViolinReal-v5.html#bowing"
     },
     {
-      "name": "연습 스트릭",
-      "short_name": "스트릭",
-      "url": "./ViolinReal-v5.html#streak"
+      "name": "비브라토 트레이너",
+      "short_name": "비브라토",
+      "url": "./ViolinReal-v5.html#vibrato"
     },
     {
-      "name": "관리 가이드",
-      "short_name": "관리",
-      "url": "./ViolinReal-v5.html#care"
+      "name": "음정 히트맵",
+      "short_name": "음정맵",
+      "url": "./ViolinReal-v5.html#pitchmap"
     },
     {
-      "name": "장르 탐험",
-      "short_name": "장르",
-      "url": "./ViolinReal-v5.html#genre"
+      "name": "연습 저널",
+      "short_name": "저널",
+      "url": "./ViolinReal-v5.html#journal"
     },
     {
-      "name": "자세 클리닉",
-      "short_name": "자세",
-      "url": "./ViolinReal-v5.html#posture"
+      "name": "곡 진행 맵",
+      "short_name": "곡맵",
+      "url": "./ViolinReal-v5.html#songmap"
     },
     {
-      "name": "연습 타이머",
-      "short_name": "타이머",
-      "url": "./ViolinReal-v5.html#timer"
+      "name": "합주 시뮬레이터",
+      "short_name": "합주",
+      "url": "./ViolinReal-v5.html#ensemble"
     }
   ]
 }

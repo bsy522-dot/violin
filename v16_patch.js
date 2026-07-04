@@ -1017,5 +1017,245 @@ var logoEl=document.getElementById('logo');if(logoEl)logoEl.textContent='Violin 
   observer.observe(document.body,{childList:true,subtree:false});
 })();
 
+/* ─── 20. BOW PATTERN EXERCISES DATA ─── */
+var BOW_PATTERN_EXERCISES=[
+  {pattern:'legato',exercise:'긴 활 전체로 끊김 없이 연주',tempo:60,beats:4,level:'초급'},
+  {pattern:'staccato',exercise:'상3분에서 짧게 끊어 연주',tempo:80,beats:8,level:'초급'},
+  {pattern:'spiccato',exercise:'활 무게중심에서 바운스',tempo:100,beats:8,level:'중급'},
+  {pattern:'martele',exercise:'강한 프레셔로 명확히 발음',tempo:72,beats:4,level:'중급'},
+  {pattern:'tremolo',exercise:'활 끝에서 빠른 왕복',tempo:60,beats:4,level:'중급'},
+  {pattern:'ricochet',exercise:'활을 떨어뜨려 바운스',tempo:88,beats:4,level:'고급'},
+  {pattern:'col_legno',exercise:'활대 나무로 가볍게 두드림',tempo:96,beats:8,level:'중급'},
+  {pattern:'sautille',exercise:'빠르고 가벼운 바운스',tempo:120,beats:8,level:'고급'},
+  {pattern:'portato',exercise:'한 활 안에서 부드럽게 분리',tempo:66,beats:4,level:'중급'},
+  {pattern:'detache',exercise:'음마다 활방향 전환',tempo:84,beats:8,level:'초급'},
+  {pattern:'flautato',exercise:'지판 가까이 가벼운 프레셔',tempo:54,beats:4,level:'고급'},
+  {pattern:'sur_la_touche',exercise:'지판 위에서 오버톤 음색',tempo:58,beats:4,level:'고급'}
+];
+var BOW_COMBINATION_EXERCISES=[
+  {name:'레가토-스타카토',patterns:['legato','staccato'],desc:'연결에서 끊기로 전환'},
+  {name:'스피카토-소티예',patterns:['spiccato','sautille'],desc:'튕김 가속 연습'},
+  {name:'마르텔레-데타셰',patterns:['martele','detache'],desc:'강발음에서 분리로'},
+  {name:'트레몰로-리코셰',patterns:['tremolo','ricochet'],desc:'빠른 반복에서 바운스'},
+  {name:'포르타토-레가토',patterns:['portato','legato'],desc:'점진적 연결'},
+  {name:'콜레뇨-플라우타토',patterns:['col_legno','flautato'],desc:'특수 음색 교대'}
+];
+
+/* ─── 21. EXPRESSION ANALYSIS CRITERIA ─── */
+var EXPR_CRITERIA={
+  dynamics:{name:'��이내믹',levels:['ppp','pp','p','mp','mf','f','ff','fff'],desc:'음량 변화와 대비 조절 능력'},
+  vibrato:{name:'비브라토',levels:['논비브','좁은비브','중간비브','넓은비브','감정비브'],desc:'떨림의 속도와 폭 조절'},
+  fortepiano:{name:'포르테피아노',levels:['fp','sfz','sfp','fz','rf'],desc:'순간적 다이내믹 전환'},
+  agogic:{name:'아고깅',levels:['a tempo','rit.','accel.','rubato','tenuto'],desc:'템포의 미세한 ���화'},
+  articulation:{name:'아��큘레이션',levels:['레가토','스타카토','테누토','악센트','마르카토'],desc:'음의 시작과 끝 처리'},
+  phrasing:{name:'프레이징',levels:['2��디','4마디','8마디','긴문장','자유구성'],desc:'음악적 문장 구성'}
+};
+var EXPR_GRADE_CRITERIA=[
+  {grade:'S',min:9.0,desc:'세계적 연주자 수���의 표현력'},
+  {grade:'A',min:7.5,desc:'전문 연주자 수준의 완���도'},
+  {grade:'B',min:6.0,desc:'고급 학습자, 일부 발전 필요'},
+  {grade:'C',min:4.0,desc:'중급 학습자, 적용 연습 필���'},
+  {grade:'D',min:0,desc:'초급 단계, 기초 학습 필요'}
+];
+
+/* ─── 22. LUTHIER TOOLS & KNOWLEDGE ─── */
+var LUTHIER_TOOLS_DESC={
+  '페그와인더':{desc:'T자형 페그 회전 도구',usage:'현 감기/풀기'},
+  '줄감개':{desc:'미세조정용 소형 도구',usage:'미세 조율'},
+  '튜너':{desc:'크로마틱 음높이 측정기',usage:'튜닝 ���인'},
+  '���드툴':{desc:'활 관리용 도구 세트',usage:'활 분해/재조립'},
+  '말총':{desc:'몽골산 백마 꼬리털 150-200가닥',usage:'활모 교체 ��료'},
+  '로진':{desc:'소나무 송진 가공품',usage:'활모 마찰력 증���'},
+  '사포':{desc:'600-1200방 다양한 거칠기',usage:'표면 다듬기'},
+  '오���':{desc:'레몬오일/보어오일',usage:'지판 보습'},
+  '클리���':{desc:'니스 안전 중성 세정제',usage:'먼지/로진 제거'},
+  '포스트세터':{desc:'S자 금속 조정 도구',usage:'사운드포스트 이동'},
+  '���이트':{desc:'소형 LED 내부 조명',usage:'f홀 내부 점검'},
+  '페그컴파운드':{desc:'미끄러짐 방지 혼합물',usage:'페그 마찰력 조정'},
+  '니스빗':{desc:'미세 도포용 브러시',usage:'니스 터치업'},
+  '샌드페이퍼':{desc:'2000방 이상 초미세',usage:'니스 표면 고르기'},
+  '��':{desc:'정밀 눈금자',usage:'위치 ��정'}
+};
+var LUTHIER_KNOWLEDGE=[
+  {topic:'현의 종류',content:'거트현/스틸현/합성현 - 각각 음색과 수명이 다름'},
+  {topic:'브릿지 위치',content:'f홀 내측 눈금에 정확히 - 0.5mm도 음색에 영향'},
+  {topic:'사운드포스트',content:'바이올린의 영혼 - 브릿지 오른발 뒤에 위치'},
+  {topic:'니스의 역할',content:'보호+음색 - 두꺼우면 억제, 얇으면 손상'},
+  {topic:'활대 재질',content:'페르남부쿠(최상급) / 카본파이버(내구성)'},
+  {topic:'습도 관리',content:'40-60% 유지 - 건조시 갈라짐, 과습시 접착 해체'}
+];
+
+/* ─── 23. PRACTICE EFFICIENCY PLANS & TIPS ─── */
+var EFF_PLANS=[
+  {name:'초급 1시간',total:60,alloc:[15,15,20,5,5],desc:'기초 다지기'},
+  {name:'중급 90분',total:90,alloc:[15,25,35,10,5],desc:'에튀드+곡 확대'},
+  {name:'고급 2시간',total:120,alloc:[20,30,45,15,10],desc:'균형 고급'},
+  {name:'콩쿠르 3시간',total:180,alloc:[25,40,80,20,15],desc:'고강도 준비'},
+  {name:'리사이틀 2.5시간',total:150,alloc:[15,20,90,15,10],desc:'곡 완성도 집중'},
+  {name:'오케스트라 90분',total:90,alloc:[10,15,45,15,5],desc:'파트 연습 중심'}
+];
+var EFF_TIPS=[
+  '음계 연습은 매일 최소 10분 - 기초가 탄탄해야 모든 것이 쉬워집니다',
+  '에튀드는 한 곡 완벽히 후 다음으로 - 급하게 넘기면 실력이 안 쌓입니다',
+  '어려운 부분부터 시작 - 쉬운 부분은 나중에 연결하세요',
+  '초견 매일 꾸준히 - 읽는 속도가 빨라지면 효율도 올라갑니다',
+  '이론+연주 병행 - 화성 분석하며 곡을 연습해보세요',
+  '연습 전 스트레칭 5분 - 손가락/팔/목/어깨 부상 예방',
+  '45분 연습+10분 휴식 - 장시간 연속은 비효율적',
+  '느린 템포에서 정확히 후 속도 올리기 - 느리게 맞는 게 낫습니다',
+  '메트로놈 활용 - 리듬 정확도 크게 향상',
+  '녹음 후 객관적 청취 - 실시간 놓치는 문제 발견',
+  '연습 일지 작성 - 발전 과정 추적 가능',
+  '리듬 변형 연습 - 점리듬/역점리듬으로 어려운 패시지 극복'
+];
+
+/* ─── 24. VARIATION TECHNIQUES & THEMES ─── */
+var VARI_TECHNIQUES={
+  rhythmic:{name:'박절변형',desc:'리듬 패턴 변형 (점음표/분할)',example:'4분→8분+8분쉼표'},
+  inversion:{name:'전위',desc:'멜로디 방향 반전',example:'도-레-미→도-시-라'},
+  retrograde:{name:'역행',desc:'거꾸로 연주',example:'도-레-미-파→파-미-레-도'},
+  augmentation:{name:'확대',desc:'음 길이 2배 확대',example:'8분→4분, 4분→2분'},
+  diminution:{name:'축소',desc:'음 길이 절반 축소',example:'4분→8분, 2분→4분'},
+  ornamentation:{name:'장식',desc:'꾸밈음/트릴/턴/모르덴트 추가',example:'도-미→도-레-미(경과음)'}
+};
+var VARI_THEMES=[
+  {name:'모차르트 (반짝반짝)',notes:[60,60,67,67,69,69,67,65,65,64,64,62,62,60],key:'C장조'},
+  {name:'바흐 (미뉴에트)',notes:[67,64,64,65,67,69,67,65,64,62,64,67,64],key:'G장조'},
+  {name:'베토벤 (환희의 송가)',notes:[64,64,65,67,67,65,64,62,60,60,62,64,64,62,62],key:'D장조'},
+  {name:'비발디 (봄)',notes:[64,68,67,68,72,71,72,76,72,71,67,68,64],key:'E장조'},
+  {name:'파가니니 (카프리스24)',notes:[69,76,74,73,71,69,68,66,64,62,61,59,57],key:'A단조'}
+];
+
+/* ─── 25. PERFORMANCE RUBRIC & TIPS ─── */
+var PERF_RUBRIC={
+  pitch:{name:'음정',criteria:['인토네이션','포지션전환','더블스톱','비브라토중심'],weights:[30,25,25,20]},
+  rhythm:{name:'리듬',criteria:['박자유지','복잡리듬','루바토','템포안정'],weights:[25,25,25,25]},
+  expression:{name:'표현',criteria:['다이내믹','프레이징','음색','감정전달'],weights:[25,25,25,25]},
+  posture:{name:'자세',criteria:['홀딩','보우홀드','왼손프레임','밸런스'],weights:[25,25,25,25]},
+  stage:{name:'무대매너',criteria:['입퇴장','집중력','실수대처','카리스마'],weights:[20,30,30,20]},
+  audience:{name:'청중소통',criteria:['시선교감','MC능력','분위기','앙코르'],weights:[25,25,25,25]}
+};
+var PERF_TIPS={
+  pitch:['스케일로 인토네이션 확인','드론 음에 순정률 맞추기','녹음 후 튜너 확인','포지션전환 시 내청 훈련'],
+  rhythm:['메트로놈 다양한 빠르기 활용','복잡리듬 목소리로 먼저 읽기','약박에 메트로놈 맞추기','지휘 비트 상상하며 연주'],
+  expression:['같은 프레이즈 5가지 방식으로','좋아하는 연주자 녹음 분석','가사 감정을 음악에 담기','크레셴도/디미누엔도 시작점 정하기'],
+  posture:['거울 앞 연주로 확인','영상 녹화 후 분석','턱받침/어깨받침 전문가 확인','어깨 올라감 방지'],
+  stage:['동선 사전 연습','인사 타이밍 설정','실수 시 연주 계속','프로그램/MC 사전 준비'],
+  audience:['적절한 시선 교감','�� 해설 준비','앙코르 유연한 선택','공연 후 관객 대화']
+};
+
+/* ─── 26. STRING QUARTET DATA ─── */
+var QUARTET_REPERTOIRE=[
+  {title:'하이든 Op.76-3 &lsquo;황제&rsquo;',diff:[7,6,5,6],period:'고전',duration:'25분'},
+  {title:'모차르트 K.465 &lsquo;불협화음&rsquo;',diff:[7,7,6,7],period:'고전',duration:'28분'},
+  {title:'베토벤 Op.131',diff:[9,8,8,9],period:'고전/낭만',duration:'40분'},
+  {title:'슈베르트 &lsquo;죽음과 소녀&rsquo;',diff:[8,7,7,8],period:'낭만',duration:'38분'},
+  {title:'드보르작 &lsquo;아메리카&rsquo;',diff:[7,6,7,7],period:'낭만',duration:'25분'},
+  {title:'바르톡 4번',diff:[9,9,9,9],period:'현대',duration:'22분'},
+  {title:'라벨 F장조',diff:[8,8,8,7],period:'인상',duration:'28분'},
+  {title:'쇼스타코비치 8번',diff:[8,7,8,8],period:'현대',duration:'20분'},
+  {title:'보로딘 2번',diff:[6,6,6,6],period:'낭만',duration:'27분'},
+  {title:'멘델스존 Op.44-1',diff:[7,7,6,7],period:'낭만',duration:'30분'}
+];
+var QUARTET_ROLES={
+  first_violin:{name:'1st Violin',kr:'제1바이올린',responsibilities:['멜로디 리드','고음역','화려한 패시지','솔로'],skills:['고음 기교','다이내믹','리더십','초견력']},
+  second_violin:{name:'2nd Violin',kr:'제2바이올린',responsibilities:['화성 보조','리듬 지원','대위법','보조 멜로디'],skills:['앙상블 감각','리듬감','내성 듣기','유연성']},
+  viola:{name:'Viola',kr:'비올라',responsibilities:['내성 화성','브릿지 역할','고유 음색','중음역 멜로디'],skills:['알토보표 독해','음색 조절','화성 감각','인내심']},
+  cello:{name:'Cello',kr:'첼로',responsibilities:['저음 기초','근음 담당','리듬 골격','솔로 멜로디'],skills:['깊은 음색','인토네이션','안정된 리듬','기초 제공']}
+};
+
+/* ─── 27. MUSIC HISTORY TIMELINE ─── */
+var HIST_TIMELINE=[
+  {year:1700,event:'바로크 황금기 - 코렐리/비발디'},{year:1720,event:'바흐 무반주 소나타&파르티타'},
+  {year:1725,event:'비발디 사계 출판'},{year:1782,event:'파가니니 출생'},
+  {year:1820,event:'파가니니 24카프리스 출판'},{year:1844,event:'사라사테 출생'},
+  {year:1875,event:'크라이슬러 출생'},{year:1878,event:'차이코프스키 Vn협주곡'},
+  {year:1888,event:'엘가 사랑의 인사'},{year:1901,event:'하이페츠 출생'},
+  {year:1903,event:'시벨리우스 Vn협주곡 초연'},{year:1904,event:'밀스타인 출생'},
+  {year:1908,event:'오이스트라흐 출생'},{year:1920,event:'스턴 출생'},
+  {year:1924,event:'코간 출생'},{year:1945,event:'펄만 출생'},
+  {year:1948,event:'정경화 출생'},{year:1963,event:'무터 출생'},
+  {year:1971,event:'미도리/레핀 출생'},{year:1974,event:'벤게로프 출생'},
+  {year:1979,event:'힐러리 한 출생'}
+];
+
+/* ─── 28. CANVAS HELPERS ─── */
+function wrapText(ctx,text,x,y,maxW,lh){
+  var line='',lines=[];
+  for(var i=0;i<text.length;i++){
+    var t=line+text[i];if(ctx.measureText(t).width>maxW&&i>0){lines.push(line);line=text[i];}else{line=t;}}
+  lines.push(line);lines.forEach(function(l,idx){ctx.fillText(l,x,y+idx*lh);});return lines.length;
+}
+function drawStaffLines(ctx,x,y,W,gap,color){
+  ctx.strokeStyle=color||'rgba(255,215,0,.2)';ctx.lineWidth=0.5;
+  for(var i=0;i<5;i++){ctx.beginPath();ctx.moveTo(x,y+i*gap);ctx.lineTo(x+W,y+i*gap);ctx.stroke();}
+}
+function drawNoteOnStaff(ctx,x,y,color){
+  ctx.fillStyle=color;ctx.beginPath();ctx.ellipse(x,y,4,3,-.2,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=color;ctx.lineWidth=0.8;ctx.beginPath();ctx.moveTo(x+3,y);ctx.lineTo(x+3,y-18);ctx.stroke();
+}
+
+/* ─── 29. PERFORMANCE REPORT FULL DRAW ─── */
+function drawPerfReportFull(ctx,W,H,scores,grade){
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='rgba(26,16,32,.95)';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#ffd700';ctx.font='bold 14px sans-serif';ctx.fillText('공연 분석 리포트',W/2-55,28);
+  ctx.font='10px sans-serif';ctx.fillStyle='#c9a96e';
+  ctx.fillText(new Date().toLocaleString('ko-KR')+' | 등급: '+grade,20,50);
+  var barW=60,gap=25,sX=60,cH=180,bY=280;
+  var cols=['#f44336','#ff9800','#4caf50','#2196f3','#9c27b0','#e91e63'];
+  scores.forEach(function(s,i){
+    var x=sX+i*(barW+gap),h=cH*(s/100);
+    ctx.fillStyle=cols[i];ctx.fillRect(x,bY-h,barW,h);
+    ctx.fillStyle='#c9a96e';ctx.font='9px sans-serif';ctx.fillText(PERF_CATS[i],x+5,bY+14);
+    ctx.fillStyle='#ffd700';ctx.font='bold 10px sans-serif';ctx.fillText(s+'',x+barW/2-8,bY-h-6);
+  });
+  var tipY=305;ctx.fillStyle='#c9a96e';ctx.font='9px sans-serif';
+  scores.forEach(function(s,i){
+    var tips=PERF_TIPS[Object.keys(PERF_TIPS)[i]];
+    if(tips&&s<80){ctx.fillText(PERF_CATS[i]+': '+tips[Math.floor(Math.random()*4)],20,tipY);tipY+=13;}
+  });
+}
+
+/* ─── 31. STATISTICS AND TRACKING ─── */
+(function trackV16Stats(){
+  var stats=loadProgress();
+  if(!stats.v16_first_open){
+    stats.v16_first_open=Date.now();
+    saveProgress(stats);
+  }
+  var totalSongs=134,totalLessons=160,totalQuiz=105,totalAch=142;
+  if(typeof window.violinStats==='undefined')window.violinStats={};
+  window.violinStats.v16={songs:totalSongs,lessons:totalLessons,quiz:totalQuiz,achievements:totalAch,features:8};
+})();
+
+/* ─── 32. QUARTET COMPATIBILITY ─── */
+function calcQuartetCompat(skills,reqs){
+  var s=0;for(var i=0;i<5;i++)s+=(10-Math.abs(skills[i]-reqs[i]));return Math.round(s/50*100);
+}
+function recommendSeating(){
+  return [{pos:'좌전',part:'1Vn'},{pos:'좌후',part:'2Vn'},{pos:'우전',part:'Va'},{pos:'우후',part:'Vc'}];
+}
+
+/* ─── 33. MUSIC THEORY FACTS ─── */
+var MUSIC_THEORY_FACTS=[
+  {topic:'비발디',fact:'사계는 4개의 Vn 협주곡'},
+  {topic:'바흐',fact:'무반주 소나타 3곡 + 파르티타 3곡 = 총 6곡'},
+  {topic:'파가니니',fact:'24 카프리스 - 기교의 바이블'},
+  {topic:'멘델스존',fact:'Vn 협주곡 E단조 Op.64 - 3대 Vn 협주곡'},
+  {topic:'브람스',fact:'Vn 협주곡 D장조 Op.77 - 요아힘 헌정'},
+  {topic:'차이코프스키',fact:'Vn 협주곡 Op.35 - 초연 시 연주 불가 평'},
+  {topic:'시벨리우스',fact:'Vn 협주곡 Op.47 - 유일한 협주곡'},
+  {topic:'베토벤',fact:'Vn 협주곡 Op.61 - 초연 실패 후 걸작 인정'},
+  {topic:'사라사테',fact:'치고이너바이젠 Op.20 - 집시 선율 활용'},
+  {topic:'크라이슬러',fact:'사랑의 기쁨 + 사랑의 슬픔 한 쌍'},
+  {topic:'엘가',fact:'사랑의 인사 Op.12 - 약혼녀에게 보낸 음악 편지'},
+  {topic:'비탈리',fact:'샤콘느 G단조 - 바로크 Vn 독주 대표작'}
+];
+
+/* ─── 34. CONSOLE BANNER ─── */
+console.log('%c♪ Violin Real v16.0 loaded ♪','color:#ffd700;font-size:14px;font-weight:bold;background:#1a1020;padding:4px 12px;border-radius:4px;');
+console.log('%cv16: 보잉패턴생성기 | 감성분석기 | 공방시뮬 | 효율최적화 | 변주작곡 | 공연분석 | 4중주배정 | 음악사퀴즈','color:#c9a96e;font-size:10px;');
+console.log('%c10곡+10레슨+15퀴즈+12업적 추가 (총 134곡/160레슨/105퀴즈/142업적)','color:#c9a96e;font-size:10px;');
+
 window.VIOLIN_VERSION='16.0';
 })();

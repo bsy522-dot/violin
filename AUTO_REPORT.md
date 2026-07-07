@@ -1,5 +1,85 @@
 # VIOLIN REAL — AUTO REPORT
 
+## 2026-07-07 — NEXTERA+PRISM v17.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Simply Violin 대비)
+
+**경쟁앱 대비 열위점 (v16 기준) → v17 해결:**
+| 기능 | Trala | Simply Violin | v16 | v17 (개선) |
+|------|-------|---------------|-----|------------|
+| 곡 라이브러리 | 1000+ | 300+ | 134곡 | **144곡** |
+| 레슨 수 | 500+ | 100+ | 160 | **170** |
+| 음정 교정 도구 | ○ AI 실시간 | ○ 기초 | 기초튜너 | **○ 12음 정밀교정 Canvas** |
+| 오케스트라 발췌곡 | ○ 라이브러리 | × | × | **○ 12곡 Canvas 도서관** |
+| 스케일 학습 체계 | ○ 진행맵 | ○ 기초 | 기초스케일 | **○ 24스케일 트리 Canvas** |
+| 활 접점 시뮬 | ○ 센서+AI | × | 3존 기초 | **○ 3존 압력 Canvas** |
+| 앙상블 매칭 | ○ 커뮤니티 | × | 4중주기초 | **○ 6축 Radar 8종 Canvas** |
+| 레퍼토리 관리 | ○ AI 추천 | ○ 진행률 | 기초추천 | **○ 20곡 달성맵 Canvas** |
+| 감정 표현 학습 | ○ AI 피드백 | × | 감성분석 | **○ 12감정 Color Wheel** |
+| 경쟁/대회 모드 | × | × | × | **○ 8인 토너먼트 Canvas** |
+
+**v17 우위점:** 바이올린 올림피아드(8인 토너먼트 브래킷), 음악감정팔레트(12감정 Color Wheel Canvas), 스케일마스터리트리(24스케일 계층 트리)는 경쟁앱에 없는 독자 기능.
+
+### Phase 2 · 개발 (전팀원 투입)
+
+**v17_patch.js** (1181줄 ~68KB, 자기완결형 IIFE 패치 모듈):
+
+#### 프론트엔드 (UI/UX)
+- 8개 전체화면 패널 (intonationPanel/excerptPanel/scaletreePanel/bowcontactPanel/ensemblePanel/repmapPanel/emotionPanel/olympiadPanel)
+- 모바일 반응형: v17NavBtn 터치 대응, overflow-y:auto
+- 다크모드 호환 (rgba 배경+투명 레이어)
+- 하단 스크롤 네비바 9종 (8기능+닫기) + Escape 전체닫기
+- 키보드 단축키 8종 (Shift+A/S/D/F/G/H/J/K)
+
+#### 백엔드/로직
+- localStorage 기반 진행상태 영속화 (v17_intonation/excerpt/scaletree/bowcontact/ensemble/repmap/emotion/olympiad)
+- IIFE 가드 `window.__V17_LOADED` 중복 방지
+- 곡 번호 s135~s144 (10곡), 레슨 l161~l170 (10레슨)
+
+#### 콘텐츠
+- 10곡 추가: 쇼팽 녹턴, 리스트 사랑의 꿈, 그리그 솔베이그의 노래, 파가니니 라 캄파넬라, 엘가 위풍당당, 크라이슬러 사랑의 기쁨, 마스네 타이스 명상곡, 몬티 차르다슈, 바흐 아리아, 비발디 사계 가을 1악장
+- 10레슨: 센트 단위 음정 교정, 정확한 반음 구별, 발췌곡 연습법, 오케스트라 튜닝, 장단조 스케일 마스터, 아르페지오 스케일, 활 무게/속도/접점, Spiccato 접점, 앙상블 역할 분배, 레퍼토리 계획
+- 15퀴즈 (105→120): 음정교정/발췌곡/스케일/활접점/앙상블/감정 관련
+- 12업적 (142→154): 각 기능 마스터 업적
+
+#### 오디오 엔진
+- SFX 12종: correct/wrong/levelup/unlock/start/complete/click/sweep/fanfare/tick/buzz/sparkle
+- Web Audio API OscillatorNode + GainNode envelope
+
+#### 비주얼
+- Canvas 2D 8종:
+  1. 음정정밀교정기: 12음 Bar + 센트 편차 + 정확도%
+  2. 오케스트라발췌곡도서관: 12곡 리스트 + 난이도 Bar + 연습시간
+  3. 스케일마스터리트리: 24스케일 계층 트리 + 연결선 + 잠금상태
+  4. 활접점시뮬레이터: 3존(지판/중간/브릿지) 압력 게이지 + 음질 피드백
+  5. 앙상블유형매칭기: 6축 Radar + 매칭점수 + 8종 앙상블
+  6. 레퍼토리달성맵: 20곡 진행률 Bar + 카테고리 태그
+  7. 음악감정팔레트: 12감정 Color Wheel + 선택강도 + 표현조합
+  8. 바이올린올림피아드: 8인 토너먼트 브래킷 + 승패결과 + 챔피언
+
+#### 데이터
+- 확장 참조 데이터 섹션 20~27 (교향곡 발췌곡, 스케일 체계, 활 접점 이론, 앙상블 유형, 레퍼토리 체계, 감정 표현법, 토너먼트 규칙, 연주 격언)
+
+### Phase 3 · 품질검증
+
+- **JS 구문**: `node --check v17_patch.js` PASS
+- **괄호 균형**: {}: 0, (): 0, []: 0 — ALL BALANCED
+- **CDN**: 0건 (외부 의존 없음)
+- **개인정보**: 0건
+- **파일 삭제**: 0건 (기존 파일 수정만)
+- **모바일**: Canvas max-width:100%, pointerdown/touchstart 대응
+- **HTML entities**: 따옴표 인코딩 준수
+
+### Phase 4 · 배포
+
+- 파일: v17_patch.js(신규), ViolinReal-v5.html, index.html, sw.js, manifest.json, AUTO_REPORT.md
+- sw.js: violin-v16 → violin-v17, v17_patch.js PRECACHE+자동주입
+- ViolinReal-v5.html: v16_patch.js+v17_patch.js script태그 추가, title v17 업데이트
+- manifest.json: v17 이름/아이콘/단축키 8종 업데이트
+- index.html: SEO 메타 v17 업데이트 (144곡/170레슨/154업적)
+
+---
+
 ## 2026-07-04 — NEXTERA+PRISM v16.0 대규모 업그레이드
 
 ### Phase 1 · 벤치마킹 분석 (Trala / Simply Violin 대비)

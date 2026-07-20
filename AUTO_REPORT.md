@@ -1210,3 +1210,56 @@ notes_50/lesson_3/song_2/warmup_all/combo_20/perfect_10/practice_15/scale_play/d
 - **manifest.json**: v12.0 설명+shortcuts 오케스트라/감상실/포지션/마스터/앙상블/역사관
 - **94곡** (+10, +12%) / **120레슨** (+10, +9%) / **94업적** (+12, +15%)
 - **8대 신규 시스템**: 오케스트라배치도/음악감상실/포지션맵/바이올린역사관/일일워밍업/연습분석대시보드/마스터클래스/앙상블파트연습
+
+---
+
+## [AUTO] 2026-07-20 Violin Real v21.0
+
+### 1차 벤치마킹 분석
+**경쟁앱**: Trala, Simply Violin, Violy
+
+| 열위점 | 경쟁앱 기능 | v21 해결 |
+|--------|------------|----------|
+| 보잉 속도 추적 | Trala 실시간 보잉 분석 | 보잉 속도 분석기 Canvas 580x360 |
+| 다이내믹 표현 | Simply Violin pp~ff 가이드 | 다이내믹 표현 트레이너 Canvas 560x340 |
+| 청음 훈련 | Trala 음정 인식 학습 | 청음 인터벌 인식기 Canvas 600x380 |
+| 현 이동 시각화 | Violy 스트링 크로싱 가이드 | 현 이동 패턴 시각화 Canvas 580x360 |
+| 톤 컬러 가이드 | Trala 음색 분석 | 톤 컬러 팔레트 Canvas 600x380 |
+| 연습 타이머 | Simply Violin 세션 관리 | 연습 세션 타이머 Canvas 580x340 |
+| 코드/더블스톱 이해 | Violy 음악이론 | 음악 이론 코드 빌더 Canvas 620x380 |
+| 공연 불안 관리 | Trala 멘탈 코칭 | 공연 불안 관리기 Canvas 580x360 |
+
+### 2차 개발 (v21_patch.js - 972줄)
+**8대 신규 Canvas 기능:**
+1. **보잉 속도 분석기** (580x360): 7종 보잉 스트로크(Detaché/Legato/Staccato/Spiccato/Martelé/Tremolo/Col Legno) 속도vs압력 산점도, Contact Point 분석
+2. **다이내믹 표현 트레이너** (560x340): pp~ff 6단계, Crescendo/Diminuendo 10문제 연습, S~D 종합등급
+3. **청음 인터벌 인식기** (600x380): 13개 인터벌(완전1도~완전8도) 청음 퀴즈, Web Audio API 음정 재생, 정확도 바차트
+4. **현 이동 패턴 시각화** (580x360): G/D/A/E 4현 10종 크로싱 패턴, 애니메이션 드릴, 순차/도약/아르페지오/랜덤
+5. **톤 컬러 팔레트** (600x380): 8종 톤컬러(Brillante/Dolce/Sul Tasto/Sul Ponticello/Con Sordino/Flautando/Espressivo/Martellato), Contact-Speed-Pressure 삼각 다이어그램
+6. **연습 세션 타이머** (580x340): 포모도로 스타일 25/15/10/5분, 5카테고리(테크닉/레퍼토리/스케일/에튀드/초견) 원형 프로그레스, 세션 통계
+7. **음악 이론 코드 빌더** (620x380): 8종 코드(Major/Minor/Dim/Aug/Dom7/Maj7/Min7/Sus4), 12개 Root 전환, 오선보 렌더링, Web Audio 코드 재생, 더블스톱 가이드
+8. **공연 불안 관리기** (580x360): 8전략(호흡조절/시각화/점진적이완/긍정적자기대화/루틴설정/마음챙김/철저한준비/수용) 8축 Radar, 레벨업 시스템
+
+**콘텐츠:**
+- 10곡 추가 (174→184): 파가니니협주곡1/브람스헝가리무곡5/베토벤크로이츠르/생상스론도카프리치오조/엘가사랑의인사/파헬벨카논/비발디겨울Largo/모차르트협주곡3/드뷔시달빛/프로코피예프협주곡1
+- 10레슨 추가 (200→210): 보잉속도톤/다이내믹기초/청음입문/현이동과학/톤컬러세계/연습세션설계/코드더블스톱/무대불안극복/파가니니분석/v21종합평가
+- 15퀀즈 추가 (165→180): 보잉속도/다이내믹/인터벌/현이동/Sul Ponticello/포모도로/더블스톱/무대불안/크레셴도/Contact Point/A장조스케일/파가니니/Flautando/완전5도/Sforzando
+- 12업적 추가 (190→202)
+- SFX 15종 Web Audio API
+- 키보드 Shift+A~H + Shift+9
+
+### 3차 품질검증
+- **JS 문법**: PASS (node -c v21_patch.js, sw.js)
+- **JSON 유효성**: PASS (manifest.json)
+- **CDN 참조**: 0건
+- **개인정보**: 0건
+- **하단 고정 네비바**: 0건 (UI불가침 규칙 준수)
+- **기존 네비바 append 방식 유지**: 확인
+
+### 4차 파일 변경 목록
+- **v21_patch.js**: 신규 (972줄, 자기완결형 IIFE 패치 모듈)
+- **ViolinReal-v5.html**: v21 title 갱신 + v21_patch.js 스크립트태그
+- **sw.js**: v20→v21 (violin-v21 캐시, v21_patch.js PRECACHE+자동주입)
+- **index.html**: v21.0 SEO 전면 갱신 (title/desc/keywords/OG/Twitter)
+- **manifest.json**: v21.0 설명+shortcuts 8종 추가 (총32종)
+- **184곡** (+10) / **210레슨** (+10) / **202업적** (+12)

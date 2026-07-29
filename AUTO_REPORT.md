@@ -1367,3 +1367,66 @@ notes_50/lesson_3/song_2/warmup_all/combo_20/perfect_10/practice_15/scale_play/d
 - **index.html**: v23.0 SEO 전면 갱신 (title/desc/keywords/OG/Twitter)
 - **manifest.json**: v23.0 설명+shortcuts 8종 추가 (총48종), 아이콘 v23
 - **204곡** (+10) / **230레슨** (+10) / **226업적** (+12)
+
+---
+
+## 2026-07-29 — NEXTERA+PRISM v24.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / Violin Real 대비)
+
+| 열위점 | 경쟁앱 | v24 해결 |
+|--------|--------|----------|
+| 아티큘레이션 체계적 연습 부재 | Trala: 보잉별 레슨 | 10종×5메트릭 히트맵 매트릭스 |
+| 음악이론(5도권) 시각화 없음 | Modacity: 이론 통합 | 12키 인터랙티브 Circle of Fifths |
+| 연습 습관 분석 부재 | Violy: 연습 통계 대시보드 | 30일 습관 대시보드 6KPI 게이지 |
+| 비브라토 세부 파라미터 조절 없음 | Trala: 비브라토 가이드 | Width×Speed 3×3 그리드+파형 매칭 |
+| 코드 진행 청음 훈련 없음 | Simply Violin: 이론 퀴즈 | 8종 코드 진행 식별 트레이너 |
+| 듀엣 연습 기능 없음 | Violy: 앙상블 모드 | 8곡 듀엣 파트 선택/연습 |
+| 학습 종합 리포트 없음 | Trala: 진도 리포트 | 8축 Radar 종합 리포트 생성기 |
+| 악기 관리 가이드 부재 | Modacity: 관리 팁 | 12항목 케어 체크리스트+시즌 팁 |
+
+### Phase 2 · 개발팀 전체 투입
+
+#### 프론트엔드 (8 Canvas 인터랙티브 기능)
+1. **아티큘레이션 마스터리 매트릭스** Canvas 620x400 — 10종(Detaché~Ricochet)×5메트릭 히트맵, 1-5레벨 클릭 레이팅, 5색 컬러코딩, 랜덤 드릴 추천
+2. **5도권 탐험기** Canvas 600x380 — 12키 원형 배치, 내부 단조 링, 클릭 키 탐험, 조표/도미넌트/서브도미넌트/관계조 정보, 12/12 탐험 추적
+3. **연습 습관 대시보드** Canvas 620x380 — 30일 바차트, 30분 목표선, 6KPI 반원게이지(Consistency/Duration/Diversity/Improvement/Streak/Goals), 시뮬레이션 모드
+4. **비브라토 파라미터 튜너** Canvas 600x380 — Narrow/Medium/Wide × Slow/Medium/Fast 3×3 그리드, 선택/타겟 듀얼 파형, 매칭 게임, S~D등급
+5. **코드 진행 청음 트레이너** Canvas 620x400 — I-IV-V-I, I-V-vi-IV 등 8종 진행, 클릭 퀴즈, 점수 추적, 등급 시스템
+6. **듀엣 파트 연습기** Canvas 620x380 — Canon in D, Passacaglia 등 8곡, 파트 선택/전환, 연습 팁 5종, 세션 카운트
+7. **학습 리포트 생성기** Canvas 600x380 — 8스킬 Radar(Intonation/Bow Control/Rhythm/Theory/Expression/Sight Reading/Technique/Ear Training), S~D등급, 추천사항 5종
+8. **악기 관리 가이드** Canvas 620x400 — 12항목 체크리스트(로진/현/브릿지/페그/활/본체/교체/사운드포스트/습도/케이스/턱받침/활털), 완료율 프로그레스바, 시즌별 팁
+
+#### 콘텐츠 제작
+- **10곡 추가** (s205-s214): Meditation(Massenet), Zigeunerweisen(Sarasate), Czardas(Monti), Sonata No.1 Presto(Bach), Liebesleid(Kreisler), Introduction and Rondo Capriccioso(Saint-Saëns), Violin Concerto 1st mvt(Mendelssohn), Salut d'Amour(Elgar), Csardas Scene(Hubay), Sicilienne(Fauré) → 총 214곡
+- **10레슨 추가** (l231-l240): Articulation Mastery, Circle of Fifths, Practice Habits, Vibrato Control, Chord Progressions, Duet Fundamentals, Practice Data, Violin Care, Zigeunerweisen Analysis, v24 Review → 총 240레슨
+- **15퀴즈 추가** (v24): 아티큘레이션/5도권/비브라토/코드진행/보잉/활털재료/Massenet/현교체/듀엣/Sul ponticello/스트릭/Saint-Saëns/브릿지/Ricochet/연습세션 → 총 225문
+- **12업적 추가**: art_explorer/cof_navigator/habit_builder/vib_tuner/chord_listener/duet_partner/report_reader/care_expert/quiz_v24_master/song_214/v24_explorer/v24_complete → 총 238개
+
+#### 오디오 엔진
+- SFX 16종 Web Audio API: art_tap/art_master/cof_key/cof_rotate/habit_log/habit_streak/vib_tune/vib_match/chord_play/chord_correct/duet_start/duet_switch/report_gen/care_check/quiz_v24/achieve
+
+#### 키보드 단축키
+- Shift+Q(Articulation), Shift+W(CoF), Shift+R(Habits), Shift+T(Vibrato), Shift+U(Chords), Shift+V(Duet), Shift+Y(Report), Shift+Z(Care), Shift+Period(Quiz24)
+
+### Phase 3 · 품질팀 검증
+
+| 검증 항목 | 결과 |
+|-----------|------|
+| JS 문법 (node -c v24_patch.js) | PASS (892줄) |
+| SW 문법 (node -c sw.js) | PASS |
+| JSON 파싱 (manifest.json) | PASS (56 shortcuts) |
+| 외부 CDN/링크 | 0건 |
+| 개인정보 노출 | 0건 |
+| 하단 고정 네비바 | 0건 (기존 네비바에 append — UI불가침 규칙 준수) |
+| IIFE 패턴 중복 로드 방지 | __V24_LOADED guard |
+| localStorage 데이터 격리 | v24_ prefix 전용 키 |
+
+### Phase 4 · 마무리
+
+- v24_patch.js 신규 (892줄, 자기완결형 IIFE 패치 모듈)
+- index.html SEO v24 갱신 (title/desc/keywords/OG/Twitter)
+- ViolinReal-v5.html v24 script 태그 추가
+- sw.js 캐시 violin-v24, v24_patch.js PRECACHE+자동주입
+- manifest.json v24 설명+shortcuts 8종 추가 (총56종)
+- AUTO_REPORT.md v24.0 보고서 추가

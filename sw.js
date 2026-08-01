@@ -1,5 +1,5 @@
-const CACHE='violin-v24';
-const URLS=['./','./ViolinReal-v5.html','./v6_patch.js','./v7_patch.js','./v8_patch.js','./v9_patch.js','./v10_patch.js','./v11_patch.js','./v12_patch.js','./v13_patch.js','./v14_patch.js','./v15_patch.js','./v16_patch.js','./v17_patch.js','./v18_patch.js','./v19_patch.js','./v20_patch.js','./v21_patch.js','./v22_patch.js','./v23_patch.js','./v24_patch.js','./manifest.json'];
+const CACHE='violin-v25';
+const URLS=['./','./ViolinReal-v5.html','./v6_patch.js','./v7_patch.js','./v8_patch.js','./v9_patch.js','./v10_patch.js','./v11_patch.js','./v12_patch.js','./v13_patch.js','./v14_patch.js','./v15_patch.js','./v16_patch.js','./v17_patch.js','./v18_patch.js','./v19_patch.js','./v20_patch.js','./v21_patch.js','./v22_patch.js','./v23_patch.js','./v24_patch.js','./v25_patch.js','./manifest.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('fetch',e=>{
@@ -11,62 +11,10 @@ self.addEventListener('fetch',e=>{
           const clone=res.clone();
           caches.open(CACHE).then(cache=>cache.put(e.request,clone));
           return res.text().then(html=>{
-            if(!html.includes('v6_patch.js')){
-              html=html.replace('</body>','<script src="./v6_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v7_patch.js')){
-              html=html.replace('</body>','<script src="./v7_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v8_patch.js')){
-              html=html.replace('</body>','<script src="./v8_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v9_patch.js')){
-              html=html.replace('</body>','<script src="./v9_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v10_patch.js')){
-              html=html.replace('</body>','<script src="./v10_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v11_patch.js')){
-              html=html.replace('</body>','<script src="./v11_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v12_patch.js')){
-              html=html.replace('</body>','<script src="./v12_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v13_patch.js')){
-              html=html.replace('</body>','<script src="./v13_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v14_patch.js')){
-              html=html.replace('</body>','<script src="./v14_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v15_patch.js')){
-              html=html.replace('</body>','<script src="./v15_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v16_patch.js')){
-              html=html.replace('</body>','<script src="./v16_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v17_patch.js')){
-              html=html.replace('</body>','<script src="./v17_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v18_patch.js')){
-              html=html.replace('</body>','<script src="./v18_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v19_patch.js')){
-              html=html.replace('</body>','<script src="./v19_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v20_patch.js')){
-              html=html.replace('</body>','<script src="./v20_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v21_patch.js')){
-              html=html.replace('</body>','<script src="./v21_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v22_patch.js')){
-              html=html.replace('</body>','<script src="./v22_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v23_patch.js')){
-              html=html.replace('</body>','<script src="./v23_patch.js"><\/script>\n</body>');
-            }
-            if(!html.includes('v24_patch.js')){
-              html=html.replace('</body>','<script src="./v24_patch.js"><\/script>\n</body>');
+            for(let v=6;v<=25;v++){
+              if(!html.includes('v'+v+'_patch.js')){
+                html=html.replace('</body>','<script src="./v'+v+'_patch.js"><\/script>\n</body>');
+              }
             }
             return new Response(html,{headers:{'content-type':'text/html;charset=UTF-8'}});
           });
@@ -75,62 +23,10 @@ self.addEventListener('fetch',e=>{
       }).catch(()=>caches.match(e.request).then(cached=>{
         if(!cached)return caches.match('./');
         return cached.text().then(html=>{
-          if(!html.includes('v6_patch.js')){
-            html=html.replace('</body>','<script src="./v6_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v7_patch.js')){
-            html=html.replace('</body>','<script src="./v7_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v8_patch.js')){
-            html=html.replace('</body>','<script src="./v8_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v9_patch.js')){
-            html=html.replace('</body>','<script src="./v9_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v10_patch.js')){
-            html=html.replace('</body>','<script src="./v10_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v11_patch.js')){
-            html=html.replace('</body>','<script src="./v11_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v12_patch.js')){
-            html=html.replace('</body>','<script src="./v12_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v13_patch.js')){
-            html=html.replace('</body>','<script src="./v13_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v14_patch.js')){
-            html=html.replace('</body>','<script src="./v14_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v15_patch.js')){
-            html=html.replace('</body>','<script src="./v15_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v16_patch.js')){
-            html=html.replace('</body>','<script src="./v16_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v17_patch.js')){
-            html=html.replace('</body>','<script src="./v17_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v18_patch.js')){
-            html=html.replace('</body>','<script src="./v18_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v19_patch.js')){
-            html=html.replace('</body>','<script src="./v19_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v20_patch.js')){
-            html=html.replace('</body>','<script src="./v20_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v21_patch.js')){
-            html=html.replace('</body>','<script src="./v21_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v22_patch.js')){
-            html=html.replace('</body>','<script src="./v22_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v23_patch.js')){
-            html=html.replace('</body>','<script src="./v23_patch.js"><\/script>\n</body>');
-          }
-          if(!html.includes('v24_patch.js')){
-            html=html.replace('</body>','<script src="./v24_patch.js"><\/script>\n</body>');
+          for(let v=6;v<=25;v++){
+            if(!html.includes('v'+v+'_patch.js')){
+              html=html.replace('</body>','<script src="./v'+v+'_patch.js"><\/script>\n</body>');
+            }
           }
           return new Response(html,{headers:{'content-type':'text/html;charset=UTF-8'}});
         });

@@ -1482,3 +1482,62 @@ notes_50/lesson_3/song_2/warmup_all/combo_20/perfect_10/practice_15/scale_play/d
 - sw.js 캐시 violin-v24, v24_patch.js PRECACHE+자동주입
 - manifest.json v24 설명+shortcuts 8종 추가 (총56종)
 - AUTO_REPORT.md v24.0 보고서 추가
+
+## 2026-08-04 — NEXTERA+PRISM v26.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / ViolinReal 대비)
+| 경쟁앱 | 강점 | 우리 열위점 | v26 해결 |
+|---|---|---|---|
+| Trala | 물리 기반 활 모델링 | 활 무게/중력 시뮬레이션 없음 | 활무게중력시뮬레이터 Canvas 620x400 ✅ |
+| Trala | 세션별 음정 경향 추적 | 장기 음정 편향 분석 없음 | 음정경향세션분석기 Canvas 640x400 ✅ |
+| Violy | 상세 비브라토 메트릭 | 비브라토 유형별 스펙트럼 분석 없음 | 비브라토스펙트럼분석기 Canvas 620x400 ✅ |
+| Modacity | 피로 감지 및 번아웃 방지 | 연습 번아웃 감지 시스템 없음 | 연습번아웃감지기 Canvas 600x380 ✅ |
+| Trala | 적응형 난이도 조절 초견 | 레벨별 초견 난이도 엔진 없음 | 적응형초견난이도엔진 Canvas 620x400 ✅ |
+| Violy | 현이동 패턴 최적화 | 현이동 효율성 분석 없음 | 현이동패턴최적화기 Canvas 620x380 ✅ |
+| Modacity | 무대 불안 관리 도구 | 공연 불안 시뮬레이션 없음 | 무대불안관리시뮬레이터 Canvas 600x380 ✅ |
+| 전체 | 음악가 종합 웰니스 | 전인적 음악가 건강관리 없음 | 음악가웰니스종합대시보드 Canvas 620x400 ✅ |
+
+### Phase 2 · 개발팀 투입 (v26_patch.js 자기완결형 IIFE)
+**8개 신규 Canvas 기능:**
+1. 활 무게 중력 시뮬레이터 (Canvas 620x400): 9접점(tip~frog) 자연중력 vs 적용압력 듀얼라인차트, 5역할존(pp/p/mf/f/ff), 0°~45° 기울기별 무게분포, 최적 팔무게 조절 가이드
+2. 음정 경향 세션 분석기 (Canvas 640x400): 4현×7포지션 센트편차 히트맵, 30세션 트렌드 라인차트, 이동평균 오버레이, ±5/10/15/15+¢ 4색 컬러코딩
+3. 비브라토 스펙트럼 분석기 (Canvas 620x400): 6종(Arm/Wrist/Finger/Mixed/Wide/Narrow) 6축 Radar(Speed/Width/Regularity/Intensity/Warmth/Control), 파형 시각화, S~D등급, 비교모드
+4. 연습 번아웃 감지기 (Canvas 600x380): 8피로지표(신체긴장/정신피로/음정정확도/템포불안정/다이나믹축소/톤품질저하/에러율증가/동기수준) 30일 트렌드, 4색 경고존, 주간 번아웃위험도 게이지
+5. 적응형 초견 난이도 엔진 (Canvas 620x400): ABRSM 1~8등급 8레벨, 6파라미터(조성복잡도/리듬복잡도/음역/임시표/아티큘레이션/표현기호) 스택수평바, 자동보정, 마일스톤 로드맵
+6. 현이동 패턴 최적화기 (Canvas 620x380): 6패턴(인접3+건너뛰기2+대각1) 속도/정확도 매트릭스, 6팔꿈치높이 시각화, 난이도 랭킹 바차트, 약점 드릴 추천
+7. 무대 불안 관리 시뮬레이터 (Canvas 600x380): 8불안요소(심박/호흡/근긴장/집중/기억자신감/관객인식/자기비판/시간인식) 애니메이션게이지, 5대처전략 효과 Radar, 4단계 사전루틴
+8. 음악가 웰니스 종합 대시보드 (Canvas 620x400): 8차원(신체건강/청력보호/손목관리/자세/정신건강/연습밸런스/공연자신감/음악적성장) 반원게이지 4x2, 가중종합 S~D등급, 20세션 히스토리
+
+**콘텐츠:**
+- 10곡 추가 (s225-s234): 멘델스존 바이올린 협주곡1악장/크라이슬러 사랑의슬픔/사라사테 지고이네르바이젠/엘가 사랑의인사/마스네 타이스의명상곡/프로코피예프 협주곡1-1악장/시벨리우스 협주곡1악장/글라주노프 협주곡/랄로 스페인교향곡1악장/바버 협주곡1악장 (총 234곡)
+- 10레슨 추가 (l251-l260): 활무게와중력기초/세션별음정추적/비브라토스펙트럼이해/연습번아웃예방/적응형초견전략/현이동최적화/무대불안관리법/음악가웰니스/멘델스존협주곡분석/v26종합리뷰 (총 260레슨)
+- 15퀴즈 추가 (q241-q255): 활무게/중력/음정센트/비브라토유형/번아웃/초견/현이동/무대불안/웰니스/멘델스존/사라사테/시벨리우스/ABRSM/활기울기/연습시간 (총 255문)
+- 12업적 추가: bow_physicist/inton_tracker/vib_spectral/burnout_detective/sight_adaptor/crossing_master/stage_manager/wellness_guru/quiz_v26_master/song_234/v26_explorer/v26_complete (총 262개)
+
+#### 오디오 엔진
+- SFX 16종 Web Audio API: bow_weight/bow_optimal_v26/inton_tap/inton_session/vib_spectrum/vib_compare/burnout_check/burnout_alert/sight_level/sight_advance/cross_pattern/cross_drill/stage_breath/stage_calm/wellness_check/achieve_v26
+
+#### 키보드 단축키
+- Shift+Q(활무게), Shift+W(음정경향), Shift+E(비브라토스펙트럼), Shift+R(번아웃), Shift+T(초견), Shift+Y(현이동), Shift+U(무대불안), Shift+I(웰니스), Shift+0(퀴즈v26)
+
+### Phase 3 · 품질팀 검증
+
+| 검증 항목 | 결과 |
+|-----------|------|
+| JS 문법 (node -c v26_patch.js) | PASS |
+| SW 문법 (node -c sw.js) | PASS |
+| JSON 파싱 (manifest.json) | PASS (72 shortcuts) |
+| 외부 CDN/링크 | 0건 |
+| 개인정보 노출 | 0건 |
+| 하단 고정 네비바 | 0건 (기존 네비바에 append — UI불가침 규칙 준수) |
+| IIFE 패턴 중복 로드 방지 | __V26_LOADED guard |
+| localStorage 데이터 격리 | v26_ prefix 전용 키 |
+
+### Phase 4 · 마무리
+
+- v26_patch.js 신규 (자기완결형 IIFE 패치 모듈)
+- index.html SEO v26 갱신 (title/desc/keywords/OG/Twitter)
+- ViolinReal-v5.html v25+v26 script 태그 추가
+- sw.js 캐시 violin-v26, v26_patch.js PRECACHE+자동주입(v6~v26)
+- manifest.json v26 설명+shortcuts 8종 추가 (총72종)
+- AUTO_REPORT.md v26.0 보고서 추가

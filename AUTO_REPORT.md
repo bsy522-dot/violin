@@ -1,5 +1,47 @@
 # VIOLIN REAL — AUTO REPORT
 
+## 2026-08-08 — NEXTERA+PRISM v27.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / ViolinReal 대비)
+| 열위점 | 경쟁앱 기능 | v27 해결책 |
+|--------|------------|-----------|
+| 활분배 분석 없음 | Trala: 활 사용 피드백 | 활분배비율최적화기 7유형 스택바 Canvas 620x400 |
+| 음계속도 진단 없음 | Modacity: BPM 추적 | 음계속도진단기 12스케일 탭BPM Canvas 620x400 |
+| 시대별 레퍼토리 없음 | Violy: 시대 필터 | 레퍼토리시대별탐험기 6시대 트리맵 Canvas 640x400 |
+| 조율 레퍼런스 없음 | ViolinReal: 튜너 | 조율레퍼런스도구 4현 주파수+게이지 Canvas 620x400 |
+| 앙상블 인식 없음 | Trala: 파트 연습 | 앙상블파트인식기 4파트 6축 Radar Canvas 620x400 |
+| 연습 로그 없음 | Modacity: 연습 기록 | 연습로그분석기 7일x8카테고리 히트맵 Canvas 620x400 |
+| 테크닉 비교 없음 | Violy: 기법 추적 | 테크닉비교진단기 8테크닉 듀얼바 Canvas 620x400 |
+| 종합 대시보드 없음 | 경쟁앱 공통 | 종합연주역량대시보드 8KPI 반원게이지 Canvas 620x400 |
+
+### Phase 2 · 개발 (전체팀 투입)
+- **v27_patch.js**: 신규 (903줄, 자기완결형 IIFE 패치 모듈)
+- **Canvas 8종**: 활분배비율최적화기, 음계속도진단기, 레퍼토리시대별탐험기, 조율레퍼런스도구, 앙상블파트인식기, 연습로그분석기, 테크닉비교진단기, 종합연주역량대시보드
+- **10곡 추가 (234→244)**: 바흐 샤콘느, 베토벤 크로이처 소나타, 라벨 치간, 브람스 협주곡, 생상스 론도 카프리치오소, 본 윌리엄스 종달새의 비상, 파가니니 카프리체 24, 모차르트 협주곡 3번, 쇼송 포엠, 쇼스타코비치 협주곡 1번
+- **10레슨 추가 (260→270)**: l261-l270
+- **15퀴즈 추가 (255→270)**: q256-q270
+- **12업적 추가 (262→274)**: bow_distributor, scale_speedster, era_explorer, tuning_master, ensemble_listener, practice_logger, technique_analyst, performance_ace, quiz_v27_master, song_244, v27_explorer, v27_complete
+- **SFX 16종**: bow_dist, bow_optimal_v27, scale_tap, scale_record, era_select, era_detail, tune_ping, tune_lock, ens_part, ens_analyze, plog_check, plog_streak, tech_compare, tech_improve, perf_gauge, achieve_v27
+- **키보드 Shift+Q/W/E/R/T/Y/U/I/9**
+- 기존 네비바에 9버튼 append (하단 네비바 신규생성 없음 - UI불가침 규칙 준수)
+
+### Phase 3 · 품질 검증
+- JS 검증: node --check v27_patch.js PASS (903줄)
+- JSON 검증: manifest.json PASS (80 shortcuts)
+- SW 검증: node --check sw.js PASS
+- CDN 외부링크: 0건
+- 개인정보: 0건
+- 하단 고정 네비바 신설: 0건
+
+### Phase 4 · 배포
+- index.html: v27 SEO 전면 갱신 (title/desc/keywords/OG/Twitter)
+- ViolinReal-v5.html: v27 script 태그 추가
+- sw.js: violin-v26→v27 캐시 갱신, v27_patch.js PRECACHE+자동주입 (v<=27)
+- manifest.json: v27 설명+shortcuts 8종 추가 (총80종)
+- AUTO_REPORT.md: v27 4단계 보고서 추가
+
+---
+
 ## 2026-08-01 — NEXTERA+PRISM v25.0 대규모 업그레이드
 
 ### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / ViolinReal 대비)

@@ -1583,3 +1583,71 @@ notes_50/lesson_3/song_2/warmup_all/combo_20/perfect_10/practice_15/scale_play/d
 - sw.js 캐시 violin-v26, v26_patch.js PRECACHE+자동주입(v6~v26)
 - manifest.json v26 설명+shortcuts 8종 추가 (총72종)
 - AUTO_REPORT.md v26.0 보고서 추가
+
+---
+
+## v28.0 — 2026-08-11
+
+### 1차: 벤치마킹+분석
+
+**비교 대상**: Trala, Violy, Modacity, Violin Real
+
+| 열위점 | 경쟁앱 수준 | violin v27 | v28 개선 |
+|--------|-------------|------------|----------|
+| 세션 인토네이션 드리프트 분석 | Trala: 기본 음정 피드백만 | 없음 | 인토네이션 드리프트 타임라인 Canvas 620x400 |
+| 활 접촉점×다이내믹 교차분석 | Violy: 접촉점 분석 없음 | 없음 | 활접촉점 소노리티 매트릭스 Canvas 640x400 |
+| 포지션 전환 경로 최적화 | Modacity: 전환 최적화 없음 | 없음 | 포지션 전환 경로 최적화기 Canvas 620x400 |
+| 비브라토와 감정 연계 가이드 | 기본 비브라토 속도만 | 스펙트럼 분석만 | 비브라토 감정 스펙트럼 Canvas 620x400 |
+| 시간대별 연습 효율 분석 | 없음 | 없음 | 연습 피크 퍼포먼스 시간대 분석기 Canvas 640x400 |
+| 음색 DNA 프로파일링 | ViolinReal: 기본 음색만 | 없음 | 현악기 음색 DNA 프로파일러 Canvas 620x400 |
+| 보잉 에너지 효율 분석 | 없음 | 없음 | 보잉 에너지 효율 분석기 Canvas 620x400 |
+| 종합 마에스트로 역량 지수 | 단편적 평가만 | 연주역량 대시보드 | 종합 마에스트로 인덱스 Canvas 620x400 |
+
+### 2차: 개발
+
+**v28_patch.js** (1019줄, 자기완결형 IIFE 패치 모듈)
+
+#### 8 Canvas 인터랙티브 기능
+1. **인토네이션 드리프트 타임라인** Canvas 620x400 — 30노트 센트편차 라인차트, 드리프트존(피로/워밍업/피크정확도) 색상구분, S~D등급
+2. **활 접촉점 소노리티 매트릭스** Canvas 640x400 — 7접촉점(sul tasto~sul ponticello) × 6다이내믹(pp~ff) 히트맵, 셀 클릭 상세, S~D등급
+3. **포지션 전환 경로 최적화기** Canvas 620x400 — 7포지션 × 4현 그리드, 화살표 전환경로, 거리/난이도/속도 표시
+4. **비브라토 감정 스펙트럼** Canvas 620x400 — 10감정(Joy/Sorrow/Tension/Calm/Passion/Nostalgia/Mystery/Triumph/Serenity/Agony) Radar, 비브라토 파라미터 매핑
+5. **연습 피크 퍼포먼스 시간대 분석기** Canvas 640x400 — 12시간대 × 7일 히트맵, 서카디안 리듬 분석, 최적 연습시간 추천
+6. **현악기 음색 DNA 프로파일러** Canvas 620x400 — 8축(Warmth/Brilliance/Projection/Depth/Clarity/Resonance/Edge/Sweetness) Radar, Stradivarius/Guarneri/Amati/Stainer/Modern 5종 비교
+7. **보잉 에너지 효율 분석기** Canvas 620x400 — 8보잉기법(Detaché/Legato/Staccato/Spiccato/Martelé/Tremolo/Ricochet/Col legno) 에너지 입력 vs 출력 듀얼바, 효율% 표시
+8. **종합 바이올린 마에스트로 인덱스** Canvas 620x400 — 8KPI 반원게이지 4×2(Intonation/Bowing/Vibrato/Position/SightRead/Expression/Technique/Repertoire), 가중 종합 S~D등급
+
+#### 10곡 추가 (244→254)
+- Wieniawski Polonaise No.1 / Kreisler Praeludium and Allegro / Prokofiev Violin Sonata No.1 / Sarasate Carmen Fantasy / Elgar Salut d'Amour / Massenet Meditation from Thais / Bartok Violin Concerto No.2 / Ysaye Sonata No.3 Ballade / Vivaldi Four Seasons Summer 3rd / Mendelssohn Violin Concerto 3rd mvt
+
+#### 10레슨 추가 (270→280)
+- l271~l280: Intonation Drift Awareness / Bow Contact Point Mastery / Efficient Position Shifting / Vibrato as Emotional Expression / Optimizing Practice Schedule / Understanding Violin Tone DNA / Bow Energy Conservation / Wieniawski Polonaise Guide / Sarasate Carmen Fantasy Breakdown / v28 Comprehensive Review
+
+#### 퀴즈 +15문 (270→285)
+- 비에니아프스키/인토네이션/접촉점/포지션전환/비브라토감정/연습시간/음색/보잉효율/사라사테/바르톡/이자이/비발디/멘델스존/엘가/마스네 관련
+
+#### 업적 +12 (274→286)
+- intonation_tracker, sonority_mapper, position_navigator, vibrato_emoter, peak_finder, tone_profiler, energy_optimizer, maestro_achiever, quiz_v28_master, song_254, v28_explorer, v28_complete
+
+#### SFX 16종 (Web Audio API)
+- drift_note, drift_zone, sonority_cell, sonority_rate, pos_select, pos_arrow, vib_emotion, vib_setting, peak_slot, peak_optimal, tone_axis, tone_compare, energy_bar, energy_tip, maestro_gauge, achieve_v28
+
+#### 키보드 단축키
+- Shift+Q/W/E/R/T/Y/U/I/0 → 8기능 + 퀴즈
+
+### 3차: 품질검증
+
+- **JS 문법**: `node --check v28_patch.js` PASS (1019줄)
+- **JSON 검증**: manifest.json PASS (88 shortcuts, URL 중복 0건)
+- **외부 CDN**: 0건
+- **개인정보**: 0건
+- **하단 고정 네비바 신설**: 0건 (기존 네비에 append)
+- **HTML entities**: &quot; &euml; 등 정상 사용
+
+### 4차: 마무리
+
+- index.html v28 SEO 전면 갱신 (title/desc/keywords/OG/Twitter)
+- ViolinReal-v5.html v28 script 태그 추가
+- sw.js 캐시 violin-v28, v28_patch.js PRECACHE+자동주입(v6~v28)
+- manifest.json v28 설명+shortcuts 8종 추가 (총88종)
+- AUTO_REPORT.md v28.0 보고서 추가

@@ -1,5 +1,47 @@
 # VIOLIN REAL — AUTO REPORT
 
+## 2026-08-11 — NEXTERA+PRISM v28.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / ViolinReal 대비)
+| 열위점 | 경쟁앱 기능 | v28 해결책 |
+|--------|------------|-----------|
+| 다이나믹 범위 분석 없음 | Trala: AI 다이나믹 피드백 | 다이나믹레인지분석기 pp~ff 6단계 폭포차트 Canvas 620x400 |
+| 음정간격 지판 시각화 없음 | Violy: 인터벌 트레이닝 | 음정간격지판분석기 12인터벌 4현 지판맵 Canvas 620x400 |
+| 시대별 연주법 가이드 없음 | Modacity: 스타일 참조 | 시대별연주표현법가이드 6시대 8파라미터 Radar Canvas 640x400 |
+| 오케스트라 발췌곡 훈련 없음 | Trala: 발췌곡 라이브러리 | 오케스트라발췌곡트레이너 12곡 난이도/진행률 Canvas 620x400 |
+| 지판 지리 시각화 없음 | ViolinReal: 포지션맵 | 지판지리학맵 4현x7포지션 히트맵 Canvas 620x400 |
+| 음색 탐험 도구 없음 | Violy: 톤 가이드 | 음색팔레트탐험기 8음색 6속성 Radar Canvas 620x400 |
+| 무대 준비도 평가 없음 | Modacity: 공연 체크리스트 | 무대준비도평가기 8카테고리 프로그레스 Canvas 620x400 |
+| 연주자 프로필 없음 | 경쟁앱 공통 | 바이올리니스트DNA프로필 8축 Radar+등급 Canvas 620x400 |
+
+### Phase 2 · 개발 (전체팀 투입)
+- **v28_patch.js**: 신규 (901줄, 자기완결형 IIFE 패치 모듈)
+- **Canvas 8종**: 다이나믹레인지분석기, 음정간격지판분석기, 시대별연주표현법가이드, 오케스트라발췌곡트레이너, 지판지리학맵, 음색팔레트탐험기, 무대준비도평가기, 바이올리니스트DNA프로필
+- **10곡 추가 (244→254)**: 비발디 사계 봄, 차이코프스키 안단테 칸타빌레, 파가니니 라 캄파넬라, 크라이슬러 아름다운 로즈마린, 사라사테 카르멘 환상곡, 바흐 사라반드 BWV 1004, 엘가 님로드, 바르톡 루마니아 민속 춤곡, 본 윌리엄스 그린슬리브스, 드보르작 로맨틱 소품
+- **10레슨 추가 (270→280)**: l271-l280
+- **15퀴즈 추가 (270→285)**: q271-q285
+- **12업적 추가 (274→286)**: dynamics_analyst, interval_mapper, era_performer, excerpt_trainer, fb_geographer, timbre_explorer, stage_evaluator, dna_profiler, quiz_v28_master, song_254, v28_explorer, v28_complete
+- **SFX 16종**: dyn_play, dyn_level, intv_map, intv_select, era_perf, era_style, orch_excerpt, orch_progress, fb_geo, fb_zone, timbre_color, timbre_blend, stage_check, stage_score, dna_axis, achieve_v28
+- **키보드 Shift+A/S/D/F/G/H/J/K/0**
+- 기존 네비바에 9버튼 append (하단 네비바 신규생성 없음 - UI불가침 규칙 준수)
+
+### Phase 3 · 품질 검증
+- JS 검증: node --check v28_patch.js PASS (901줄)
+- JSON 검증: manifest.json PASS (88 shortcuts)
+- SW 검증: node --check sw.js PASS
+- CDN 외부링크: 0건
+- 개인정보: 0건
+- 하단 고정 네비바 신설: 0건
+
+### Phase 4 · 배포
+- index.html: v28 SEO 전면 갱신 (title/desc/keywords/OG/Twitter, 254곡/280레슨/286업적)
+- ViolinReal-v5.html: v28 script 태그 추가
+- sw.js: violin-v27→v28 캐시 갱신, v28_patch.js PRECACHE+자동주입 (v<=28)
+- manifest.json: v28 설명+shortcuts 8종 추가 (총88종)
+- AUTO_REPORT.md: v28 4단계 보고서 추가
+
+---
+
 ## 2026-08-08 — NEXTERA+PRISM v27.0 대규모 업그레이드
 
 ### Phase 1 · 벤치마킹 분석 (Trala / Violy / Modacity / ViolinReal 대비)

@@ -1696,3 +1696,54 @@ notes_50/lesson_3/song_2/warmup_all/combo_20/perfect_10/practice_15/scale_play/d
 - sw.js 캐시 violin-v29, v29_patch.js PRECACHE+자동주입(v6~v29)
 - manifest.json v29 설명+shortcuts 8종 추가 (총96종)
 - AUTO_REPORT.md v29.0 보고서 추가
+
+---
+
+## 2026-08-17 -- NEXTERA+PRISM v30.0 대규모 업그레이드
+
+### Phase 1 · 벤치마킹 분석
+- **Trala**: AI 기반 음정 피드백, 곡 라이브러리, 구조화된 커리큘럼 → 우위: 실시간 Web Audio 연주, 방대한 274곡 대비 Trala는 초급 중심
+- **Violy**: 악보 인식, 피드백 → 우위: Canvas 시각화 도구 80+종, 퀴즈/업적 게이미피케이션 방대
+- **Modacity**: 연습 추적, 목표 설정 → 우위: 8종 대시보드로 연습 데이터 시각화 압도
+- **ViolinReal (경쟁앱)**: 기본 핑거보드 → 우위: 리듬게임+학습+분석 통합 플랫폼
+- **열위점 8개 식별**: 활 궤적 시각화 부재, 명기 음색 비교 부재, 오케스트라 좌석 교육 부재, 포지션 운지 맵 부재, 루바토 템포 분석 부재, 현 교차 훈련 부재, 청음 훈련 부재, 종합 성장 지표 부재 → v30에서 전부 해결
+
+### Phase 2 · 개발
+#### 신규 콘텐츠
+- SONG_DB +10곡 (s265~s274, 264→274): Glazunov협주곡/Monti차르다시/Beethoven크로이처1악장/Saint-Saens하바네즈/Paganini라캄파넬라/Massenet타이스명상곡/Chopin-Milstein녹턴/Bach파르티타2사라반드/Ravel치간/Elgar사랑의인사
+- LESSON_DB +10레슨 (l291~l300, 290→300): 활곡선궤적/음색매칭/오케좌석/운지최적화/루바토/현교차/청음/무대불안/Glazunov해석/Ravel기법
+- 퀴즈 +15문 (q301~q315, 300→315): 보잉/톤/오케/포지션/템포/테크닉/청음/퍼포먼스/레퍼토리
+- 업적 +12종 (298→310): 활곡선마스터/음색감별사/콘서트마스터/운지최적화가/템포아티스트/현교차전문가/청음전문가/무대전사/퀴즈왕/곡탐험가/열공생/완전정복
+
+#### 8대 Canvas 인터랙티브 도구
+1. 활 곡선 궤적 분석기 Canvas 620x400 — 8종 보잉 아티큘레이션(Detache/Legato/Staccato/Spiccato/Martele/Tremolo/ColLegno/SulPont) 곡선 시각화, 진폭/안정도 분석, S~D등급
+2. 음색 매칭 도구 Canvas 620x400 — 6종 명기(Stradivarius/Guarneri/Amati/Stainer/ModernItalian/Chinese) 6축 Radar(Warmth/Brilliance/Projection/Depth/Clarity/Resonance), 비교 분석
+3. 오케스트라 좌석 배치 시뮬레이터 Canvas 640x400 — 9섹션(1st Vn/2nd Vn/Viola/Cello/Bass/Woodwind/Brass/Percussion/Conductor) 클릭 배치, 역할/인원 표시
+4. 포지션별 운지 최적화 맵 Canvas 620x400 — 4현x7포지션 그리드, 음이름/운지 표시, 클릭 확인 추적
+5. 템포 루바토 분석기 Canvas 620x400 — 8종 템포 스타일(Strict/Romantic/Baroque/Accelerando/Ritardando/Agogic/Cadenza/Waltz) 16비트 라인차트, 변동/안정도 분석
+6. 현 교차 패턴 트레이너 Canvas 620x400 — 10종 패턴(인접현/건너뛰기/아르페지오/바흐파르티타) 4현 시각화, 난이도/팔꿈치 안내
+7. 이어 트레이닝 음정 인식기 Canvas 640x400 — 12음계 Web Audio 재생, 클릭 응답, 정답 추적, 완전5도 훈련
+8. 종합 연주자 성장 대시보드 Canvas 620x400 — 8KPI(활기법/음색감별/오케/운지법/템포감각/현교차/청음/무대관리) 반원게이지 4x2, 가중 종합 S~D등급
+
+#### 키보드 단축키
+- Shift+Q(활곡선)/W(음색)/E(오케)/R(운지)/T(템포)/Y(현교차)/U(청음)/I(대시보드)/0(퀴즈)
+
+#### SFX
+- 16종 Web Audio API: bow_curve/tone_match/orch_seat/finger_map/tempo_pulse/string_cross/ear_train/stage_fright/quiz30/achieve/panel_open/panel_close/btn_click/nav_click/data_save/grade_show
+
+### Phase 3 · 품질 검증
+- node --check v30_patch.js: PASS (712줄)
+- JSON.parse manifest.json: PASS (104 shortcuts, v30 신규 중복 0건)
+- 외부 CDN 사용: 0건 (PASS)
+- 개인정보 노출: 0건 (PASS)
+- 하단 고정 네비바 신설: 0건 (PASS)
+- Math.random 사용: 0건 (PASS)
+- 기존 메인 네비게이션 클릭 가능 여부: 기존 nav에 버튼 추가 방식 (PASS)
+
+### Phase 4 · 파일 변경 요약
+- v30_patch.js 신규 (712줄 IIFE 모듈)
+- index.html v30 SEO 전면 갱신 (title/desc/keywords/OG/Twitter) 274곡/300레슨/310업적
+- ViolinReal-v5.html v30 script 태그 추가
+- sw.js 캐시 violin-v30, v30_patch.js PRECACHE+자동주입(v6~v30)
+- manifest.json v30 설명+shortcuts 8종 추가 (총104종)
+- AUTO_REPORT.md v30.0 보고서 추가
